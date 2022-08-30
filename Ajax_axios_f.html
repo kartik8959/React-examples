@@ -1,0 +1,40 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+<script src="axios.min.js"></script>
+
+
+<div></div>
+
+
+<script type="text/babel">
+
+const App=()=>{
+    const [data,setData]=React.useState([])
+    const fnGetUsers=async ()=>{
+          const res=  await axios.get('https://jsonplaceholder.typicode.com/users')
+          setData(res.data)
+    }
+    return <div>
+           <button onClick={fnGetUsers}>Get Users</button>
+
+         {data.length > 0 ?  <ol>
+                {
+                    data.map((obj,index)=>{
+                        return <li key={index}>{`${obj.name}--->${obj.phone}--->${obj.email}`}</li>
+                    })
+                }
+           </ol>
+           : <h3>No Data Found</h3>
+        }
+        </div>
+}
+
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

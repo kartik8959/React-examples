@@ -1,0 +1,116 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+
+  function App(){
+     const players=['Sachin','Dhoni','Kohli','uv','Lara']
+
+     const Questions=[
+         {
+             'que':'Below Which player belongs to Indian cricket team ?',
+             'options':['Lara','Pointing','Sachin','None']
+         },
+         {
+             'que':'Below Which players are not belongs to Indian cricket team ?',
+             'options':['Lara','Pointing','Sachin','Dhoni']
+         },
+         {
+             'que':'ReactDOM.render take how many argument ?',
+             'options':['1','2','3','4']
+         }
+     ]
+
+     const options=['Lara','Pointing','Sachin','None']
+     
+     const myPlayers=[
+         {
+            n:'Sachin',
+            r:20000
+         },
+         {
+            n:'Dhoni',
+            r:15000
+         },
+         {
+            n:'Kohli',
+            r:10000
+         }
+     ]
+
+     return <div>
+           <select>
+            {
+               players.map((v,i)=>{
+                   return <option key={i}>{v}</option>
+               })
+            }
+            </select>
+
+            <ol>
+                {
+                    players.map((v,i)=>{
+                        return <li key={i}>{v}</li>
+                    })
+                }
+               
+            </ol>
+
+            <ul>
+                {
+                    players.map((v,i)=>{
+                        return <li key={i}>{v}</li>
+                    })
+                }
+               
+            </ul>
+
+            <h3>Q.Below Which player belongs to Indian cricket team ?</h3>
+            {
+                options.map((v,i)=>{
+                    return <p key={i}><input name="1" type='radio' />{v}</p>
+                })
+            }
+            <h3>Q.Below Which players not belongs to Indian cricket team ?</h3>
+            {
+                options.map((v,i)=>{
+                    return <p key={i}><input type='checkbox' />{v}</p>
+                })
+            }
+
+            <table border="2px">
+                <thead>
+                    <tr>
+                         <th>Name</th>
+                         <th>Runs</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {
+                        myPlayers.map((obj,index)=>{
+                         return <tr key={index}>
+                            <td>{obj.n}</td>
+                            <td>{obj.r}</td>
+                         </tr>
+                        })
+                    }
+                  
+                </tbody>
+            </table>
+        </div>
+  }
+
+
+  ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+
+
+</script>
+
+

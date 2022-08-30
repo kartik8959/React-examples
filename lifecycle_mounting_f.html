@@ -1,0 +1,24 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+<script type="text/babel">
+
+  function App(){
+    
+     React.useEffect(function(){
+        console.log('component did mount')
+     },[])
+
+     return <h1>Hellow World</h1>;
+  }
+
+
+  ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+
+
+</script>
+
+

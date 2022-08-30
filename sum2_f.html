@@ -1,0 +1,44 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+
+<script type="text/babel">
+
+  const Sum=()=>{
+    const n1Ref=React.useRef()
+    const n2Ref=React.useRef()
+    const resRef=React.useRef()
+
+    const fnAdd=()=>{
+      var n1=n1Ref.current.value;
+      var n2=n2Ref.current.value;
+      var sum=Number(n1)+Number(n2);
+      resRef.current.innerText=sum;
+      var clr='red';
+      if(sum< 100){
+          clr='blue'
+      }
+      resRef.current.style.color=clr;
+    }
+    return <div>
+                <p>
+                    <b>No1:</b><input ref={n1Ref} />
+                </p>
+                <p>
+                    <b>No2:</b><input ref={n2Ref} />
+                </p>
+                <p>
+                    <input  onClick={fnAdd} type="button" value="Find Sum" />
+                </p>
+                <h1 ref={resRef}>0</h1>
+            </div>
+  }
+  
+  
+
+ReactDOM.render(<Sum name="sachin" />,document.getElementsByTagName('div')[0])
+
+</script>

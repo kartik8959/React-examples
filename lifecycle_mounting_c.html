@@ -1,0 +1,47 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+
+class App extends React.Component {
+  
+   render(){
+       console.log('redner called')
+       
+       return <h1>Sachin</h1>
+      
+   }
+   constructor(){
+        super();
+        console.log('con executed')
+       
+   }
+  
+   componentDidMount(a,b,c,d,e){
+       debugger;
+      console.log('10 lines');
+      console.log('componentDidMount called')
+   }
+
+   static getDerivedStateFromProps(){
+       console.log('getDerivedStateFromProps called')
+   }
+
+ 
+   
+}
+
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

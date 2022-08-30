@@ -1,0 +1,51 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+const App=()=>{
+    const [name,setName]=React.useState('Sachin')
+    const [cnt,setCnt]=React.useState(0)
+
+    React.useEffect(()=>{
+        console.log('componentDidMount...')
+    },[])
+
+    React.useEffect(()=>{
+        if(name!='Sachin'){
+            console.log('componentDidUpdate...')
+        }
+    },[name])
+
+    React.useEffect(()=>{
+        if(cnt!=0){
+            console.log('componentDidUpdate...')
+        }
+    },[cnt])
+
+    const fnClick=()=>{
+        setName('Dhoni')
+    }
+    const fnIncrement=()=>{
+        setCnt(cnt+1)
+    }
+    return <div>
+        <h1>{name}</h1>
+        <button onClick={fnClick}>Click</button>
+        <h1>{cnt}</h1>
+        <button onClick={fnIncrement}>Increment</button>
+       </div>
+}
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

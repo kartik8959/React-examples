@@ -1,0 +1,48 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+    
+class A extends React.Component{
+    componentWillUnmount(){
+        console.log('componentWillUnmount called')
+    }
+    render(){
+        return <h1>A Component</h1>
+    }
+}
+class App extends React.Component {
+    state={
+        isMount:true
+    }
+    fnClick=()=>{
+        this.setState({
+            isMount:false
+        })
+    }
+    render(){
+       return <div className="app">
+        <h1>App</h1>
+
+       {this.state.isMount && <A />} 
+
+        <button onClick={this.fnClick}>click</button>
+       </div>
+    }
+   
+}
+
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

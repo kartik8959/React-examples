@@ -1,0 +1,71 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+
+class TextBox extends React.Component{
+    render(){
+        return <p>
+            <b>{this.props.lbl}:</b><input type={this.props.type} />
+        </p>
+    }
+}
+
+class App extends React.Component {
+    constructor(){
+        super();
+        this.data=[
+            {
+                lbl:'UserId',
+                type:'text'
+            },
+            {
+                lbl:'Password',
+                type:'password'
+            },
+            {
+                lbl:'Location',
+                type:'text'
+            },
+            {
+                lbl:'Rno',
+                type:'number'
+            },
+            {
+                lbl:'DOB',
+                type:'date'
+            }
+        ]
+    }
+   
+    render(){
+         return <div>
+                {
+                    this.data.map((obj,i)=>{
+                        return  <TextBox key={i} lbl={obj.lbl} type={obj.type} />
+                    })
+                }
+              
+
+                <p>
+                    <input type='button' value="Login" />
+                </p>
+            </div>
+    }
+   
+}
+
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

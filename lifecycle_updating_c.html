@@ -1,0 +1,60 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+
+class Hello extends React.Component {
+    state={
+        name:'Sachin'
+    }
+    constructor(){
+        super();
+        console.log('con executed')
+    }
+    static getDerivedStateFromProps(){
+        console.log('getDerivedStateFromProps')
+        return null;
+    }
+    componentDidMount(){
+        console.log('compnentDidMount ')
+    }
+    fnClick=()=>{
+        this.setState({
+            name:'Dhoni'
+        })
+    }
+
+    shouldComponentUpdate(){
+       console.log('shouldComponentUpdate')
+       return false;
+    }
+    render(){
+       console.log('render called')
+       return <div>
+       <h1>{this.state.name}</h1>
+        <button onClick={this.fnClick}>Click</button>
+       </div>
+    }
+    getSnapshotBeforeUpdate(){
+        console.log('getSnapshotBeforeUpdate called')
+        return null
+    }
+    componentDidUpdate(){
+        console.log('componentDidUpdate')
+    }
+}
+
+
+
+ReactDOM.render(<Hello />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

@@ -1,0 +1,35 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div id="root"></div>
+
+
+
+<script type="text/babel">
+   
+  const DDL=(obj)=>{
+        return <select>
+                    {
+                        obj.data.map((v,i)=>{
+                            return  <option key={i}>{v}</option>
+                        })
+                    }
+                </select>
+  }
+
+   
+   function App(){
+        const players=['Sachin','Dhoni','Kohli']
+        const students=['S1','S2','S3','S4']
+        const heros=['Super Man', 'Bat Man']
+       return <div>
+               <DDL data={players} />
+               <DDL data={students} />
+               <DDL data={heros} />  
+          
+            </div>
+   }
+
+   ReactDOM.render(<App />, document.getElementById('root'))
+</script>

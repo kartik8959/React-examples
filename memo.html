@@ -1,0 +1,28 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+
+<script type="text/babel">
+const MyName=React.memo(()=>{
+    console.log('MyName rendered')
+    return <h1>Sachin</h1>
+})
+const App=()=>{
+    const [cnt,setCnt]=React.useState(1)
+    const fnClick=()=>{
+        setCnt(cnt+1)
+    }
+  
+        return <div>
+            <MyName />
+            <h1>{cnt}</h1>
+            <button onClick={fnClick}>click</button>
+        </div>
+}
+
+ReactDOM.render(<App name="sachin" />,document.getElementsByTagName('div')[0])
+
+</script>

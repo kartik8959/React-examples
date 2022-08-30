@@ -1,0 +1,56 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+const A=()=>{
+
+    React.useEffect(function(){
+        console.log('A: mounting')
+    },[])
+
+    React.useEffect(()=>{
+       return  ()=>{
+            console.log('A: un mounting')
+        }
+    },[])
+
+    return <h1>A Component</h1>
+}
+
+const App=()=>{
+    const [cnt,setCnt]=React.useState(1)
+    React.useEffect(function(){
+        console.log('App: mounting')
+    },[])
+    React.useEffect(()=>{
+        if(cnt != 1){
+        console.log('App: updating')
+        }
+    },[cnt])
+    const fnClick=()=>{
+        setCnt(cnt+1)
+    }
+    return <div className="app">
+        <h1>App:{cnt}</h1>
+
+       {cnt!=3 && <A />} 
+
+        <button onClick={fnClick}>click</button>
+       </div>
+}
+
+
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

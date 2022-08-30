@@ -1,0 +1,47 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+
+<script type="text/babel">
+
+  const Sum=()=>{
+    
+    const [data,setData]=React.useState({})
+    const [sum,setSum]=React.useState(0);
+
+    const fnChange=(e)=>{
+        let val=e.target.value; 
+        let key=e.target.id; n2
+        setData({...data,[key]:val})
+    }
+
+    const fnClick=()=>{
+        let res=0
+        for(var k in data){
+            res=res+Number(data[k])
+        }
+
+        setSum(res)
+    }
+    return <div>
+                <p>
+                    <b>No1:</b><input id="n1" onChange={fnChange} /> 
+                </p>
+                <p>
+                    <b>No2:</b><input id="n2" onChange={fnChange}/>
+                </p>
+                <p>
+                    <input onClick={fnClick} type="button" value="Find Sum" />
+                </p>
+                <h1>{sum}</h1>
+            </div>
+  }
+  
+ 
+
+ReactDOM.render(<Sum name="sachin" />,document.getElementsByTagName('div')[0])
+
+</script>

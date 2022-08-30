@@ -1,0 +1,27 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+<div></div>
+
+
+<script type="text/babel">
+  
+   function Player(obj){
+      return  <h1>Hey This is {obj.name} , I am from {obj.loc}</h1>
+   }
+
+   
+
+   function App(){
+        return <div>
+                <Player name='Sachin'  loc="Mumbai" />
+
+                <Player name='Dhoni'  loc="Ranchi" />
+
+                <Player name='UV'  loc="Panjab" />
+            </div>
+   }
+  
+   ReactDOM.render(<App />,document.getElementsByTagName('div')[0])
+
+</script>

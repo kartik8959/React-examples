@@ -1,0 +1,55 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+
+class Hello extends React.Component {
+    state={
+            isDisabled:true,
+            data:''
+        }
+    fnClick=()=>{
+       console.log(this.state.data)
+    }
+
+    fnChange=(e)=>{
+    this.setState({
+        data:e.target.value
+    },this.fnValidate)
+     
+    }
+
+    fnValidate(){
+      let _isDisabled=false
+      if(this.state.data == ''){
+        _isDisabled=true
+      }
+      this.setState({
+          isDisabled:_isDisabled
+      })
+    }
+
+    render(){
+       return <div>
+           <p>Name:<input onChange={this.fnChange} /></p>
+           <button onClick={this.fnClick} disabled={this.state.isDisabled}>click</button>
+           
+        </div>
+    }
+   
+}
+
+
+
+ReactDOM.render(<Hello />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

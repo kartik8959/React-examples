@@ -1,0 +1,78 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+
+class Hello extends React.Component {
+    constructor(){
+        super();
+        this.questions=[
+        {
+            que:'Which company owns React Js',
+            options:['Google','Facebook','Amazon','Microsoft'],
+            type:'s'
+
+        },
+        {
+            que:'Browsers can understand which of the following languages.',
+            options:['HTML','CSS','Javascript','Typescript'],
+            type:'m'
+        },
+        {
+            que:'Is JSX a Markup language like HTML?',
+            options:['True','False'],
+            type:'s'
+        },
+        {
+            que:'How many ways we can apply styles to our page?',
+            options:['Internal Styles','External Styles','inline','None'],
+            type:'m'
+
+        },
+        {
+            que:'Whar are the two types of components we can create in React.js',
+            options:['Functional Component','Class Component', 'A & B', 'none'],
+            type:'s'
+        }
+
+    ]
+
+    }
+
+    render(){
+       console.log('render called')
+       return <div>
+            <h1 style={{textAlign:'center'}}>Questions</h1>
+
+            {
+                this.questions.map((obj,index)=>{
+                    return <p>
+                           <h3>{index+1}. {obj.que}</h3>
+                           {
+                               obj.options.map((opt)=>{
+                                    return <div>{obj.type=='s' ? <input name={index} type='radio' /> : <input type='checkbox' />}{opt}</div>
+                               })
+                           }
+                        </p>
+                })
+            }
+
+        </div>
+    }
+   
+}
+
+
+
+ReactDOM.render(<Hello />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

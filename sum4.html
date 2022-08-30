@@ -1,0 +1,60 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+
+<script type="text/babel">
+  
+  class Sum extends React.Component{
+   constructor(){
+      console.log('con exected')
+      super();
+      this.fnClick= this.fnClick.bind(this)
+    
+      this.data={}
+      // this.sum=0;
+
+      this.state={
+          sum:0
+      }
+   }
+   fnChange(e){
+     var val=e.target.value;
+     var id=e.target.id;
+     this.data[id]=val;
+   }
+   fnClick(){
+    var res=0
+    for(var k in this.data){
+        res=res+Number(this.data[k])
+    }
+    // this.sum=res;
+    // this.state.sum=res;
+    this.setState({
+        sum:res
+    })
+   }
+   render(){
+        const {sum}=this.state
+        console.log('render executed')
+        return <div>
+                <p>
+                    <b>No1:</b><input id="n1" onChange={this.fnChange.bind(this)} />
+                </p>
+                <p>
+                    <b>No2:</b><input id="n2" onChange={this.fnChange.bind(this)}/>
+                </p>
+                <p>
+                    <input onClick={this.fnClick} type="button" value="Find Sum" />
+                </p>
+                <h1>{sum}</h1>
+            </div>
+   }
+  
+}
+
+ReactDOM.render(<Sum name="sachin" />,document.getElementsByTagName('div')[0])
+
+</script>

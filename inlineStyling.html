@@ -1,0 +1,66 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<style>
+    #content{
+        height: 300px;
+        position: relative;
+    }
+    .arrow{
+        border: 1px solid red;
+    width: 100px;
+    display: inline-block;
+    position: absolute;
+   
+    top: 150px;
+    }
+    .wall{
+        border: 1px solid red;
+    height: 300px;
+    display: inline-block;
+    position: absolute;
+    left: 500;
+    }
+</style>
+
+<div id="root"></div>
+
+
+
+<script type="text/babel">
+
+   class App extends React.Component{
+    constructor(){
+        super();
+        this.state={
+            l:0
+        }
+    }
+    fnClick=()=>{
+        let intervalId=setInterval(() => {
+            this.setState({
+              l:this.state.l+1
+           })
+           if(this.state.l==400){
+               clearInterval(intervalId)
+           }
+        }, 10);
+    }
+    render(){
+        return <div>
+            
+              <div id="content">
+                <div style={{left:this.state.l}}  className="arrow"></div>
+                <div className='wall'></div>
+               </div>
+                <input onClick={this.fnClick} type="button" value="shoot" />
+            </div>
+    }
+} 
+
+
+
+   ReactDOM.render(<App />,document.getElementById('root'))
+
+</script>

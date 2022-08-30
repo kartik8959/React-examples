@@ -1,0 +1,50 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+
+<script type="text/babel">
+  
+  class Sum extends React.Component{
+   constructor(){
+       super();
+       this.n1=React.createRef();
+       this.n2=React.createRef();
+       this.res=React.createRef();
+   }
+   
+   fnAdd(){
+       var n1=Number(this.n1.current.value);
+       var n2=Number(this.n2.current.value);
+       var res=n1+n2;
+       var resRef=this.res.current;
+       resRef.innerText=res;
+       var clr='red';
+       if(res<100){
+           clr='blue'
+       }
+       resRef.style.color=clr;
+   }
+   render(){
+        
+        return <div>
+                <p>
+                    <b>No1:</b><input ref={this.n1} />
+                </p>
+                <p>
+                    <b>No2:</b><input ref={this.n2} />
+                </p>
+                <p>
+                    <input onClick={this.fnAdd.bind(this)} type="button" value="Find Sum" />
+                </p>
+                <h1 ref={ this.res}></h1>
+            </div>
+   }
+  
+}
+
+ReactDOM.render(<Sum name="sachin" />,document.getElementsByTagName('div')[0])
+
+</script>

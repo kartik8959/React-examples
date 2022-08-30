@@ -1,0 +1,74 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+
+class A extends React.Component {
+  
+  render(){
+     return  <div>
+         <h1>A:</h1>
+         <B n={this.props.n} />
+      </div>
+  }
+ 
+}
+
+class B extends React.Component {
+  
+  render(){
+     return  <div>
+         <h1>B:</h1>
+         <C n={this.props.n}/>
+      </div>
+  }
+ 
+}
+
+class C extends React.Component {
+  
+  render(){
+     return  <div>
+         <h1>C:</h1>
+         <D n={this.props.n}/>
+      </div>
+  }
+ 
+}
+
+class D extends React.Component {
+  
+  render(){
+     return  <div>
+         <h1>D:{this.props.n}</h1>
+      </div>
+  }
+ 
+}
+
+class App extends React.Component {
+    
+    render(){
+       const name='Sachin'
+       return  <div>
+           <h1>App</h1>
+           <A n={name} />
+        </div>
+    }
+   
+}
+
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

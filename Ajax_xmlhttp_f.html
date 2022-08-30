@@ -1,0 +1,65 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+
+const App=()=>{
+    const [data,setData]=React.useState([])
+    const fnGetUsers=()=>{
+            //AJAX 
+            let obj=new XMLHttpRequest()
+
+            // parepare req
+
+            obj.open('get','https://jsonplaceholder.typicode.com/users')
+
+            // send req
+
+            obj.send()
+
+            //processing the req : done by server side guy
+
+
+            //receive succ res 
+
+            obj.onload=()=>{
+                let res= obj.responseText
+                res=JSON.parse(res);
+                setData(res)
+            }
+
+            //recive failure res
+
+            obj.onerror=()=>{
+                debugger;
+            }
+    }
+    return <div>
+           <button onClick={fnGetUsers}>Get Users</button>
+
+         {data.length > 0 ?  <ol>
+                {
+                    data.map((obj,index)=>{
+                        return <li key={index}>{`${obj.name}--->${obj.phone}--->${obj.email}`}</li>
+                    })
+                }
+           </ol>
+           : <h3>No Data Found</h3>
+        }
+        </div>
+}
+
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

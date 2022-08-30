@@ -1,0 +1,98 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>.
+<script src="react-dom.development.js"></script>
+
+<div id="root"></div>
+
+
+<style>
+    
+</style>
+
+<script type="text/babel">
+   const data=[
+       {
+           name:'sachin',
+           runs:20000,
+           loc:'Mumbai'
+       },
+       {
+           name:'Dhoni',
+           runs:10000,
+           loc:'Delhi'
+       },
+       {
+         name:'uv',
+         runs:5000,
+         loc:'Punjab'
+       }
+   ]
+   const TableHeader=({headers})=>{
+       return <thead>
+                <tr>
+                    {
+                        headers.map((v,index)=>{
+                            return <th key={index}>{v}</th>
+                        })
+                    }
+                    <th>View</th>
+                </tr>
+            </thead>
+   }
+   const TableData=({obj,keys,isShow,setIndex,ind})=>{
+      
+    return    <React.Fragment>
+               <tr>
+                    {
+                       keys.map((v,index)=>{
+                            return <td key={index}>{obj[v]}</td>
+                        })
+                    }
+                    <td><button onClick={()=>setIndex(ind)}>view</button></td>
+                </tr>
+               {isShow && <tr>
+                    {
+                       Object.keys(obj).map((v,index)=>{
+                            return <h3 key={index}>{obj[v]}</h3>
+                        })
+                    }
+                </tr>
+               }
+            </React.Fragment>
+            
+   }
+
+   class Table extends React.Component{
+       state={
+           rowIndex:-1
+       }
+       setIndex=(index)=>{
+        this.setState({
+            rowIndex:this.state.rowIndex != index ? index : -1
+        })
+       }
+       render(){
+            return <table border="2px">
+                <TableHeader headers={this.props.headers}  />
+                <tbody>
+                    {
+                        this.props.data.map((obj,index)=>{
+                            return  <TableData ind={index} setIndex={this.setIndex} isShow={this.state.rowIndex==index}  keys={this.props.keys} key={index} obj={obj} />
+                        })
+                    }
+               </tbody>
+            </table>
+       }
+   }
+   
+   class App extends React.Component{
+  
+       render(){
+           return <div>
+              <Table headers={['Name','Runs']} data={data} keys={['name','runs']} />
+           </div>
+       }
+   }
+
+   ReactDOM.render(<App />, document.getElementById('root'));
+</script>

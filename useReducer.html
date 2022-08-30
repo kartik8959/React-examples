@@ -1,0 +1,69 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div id="root"></div>
+
+
+
+<script type="text/babel">
+   
+
+   function App(){
+
+       const init={
+           name:'',
+           loc:'',
+           runs:''
+       }
+
+       const reducer=(currData,newData)=>{
+          console.log('Prev State ' , currData);
+          console.log('Action ', newData)
+          switch(newData.type){
+              case 'NAME':
+              currData={
+                  ...currData,
+                  name:newData.data
+              }
+              break;
+              case 'LOC':
+              currData={
+                  ...currData,
+                  loc:newData.data
+              }
+              break;
+              case 'RUNS':
+              currData={
+                  ...currData,
+                  runs:newData.data
+              }
+              break;
+          }
+          console.log('new State ' , currData);
+
+          return currData;
+       }
+
+       const [state,dispatch]=React.useReducer(reducer,init)
+       
+       const fnRuns=()=>{
+        dispatch({type:'RUNS',data:'20000'})
+       }
+       return <div>
+              
+              <h1>{state.name}</h1>
+              <button onClick={()=>dispatch({type:'NAME',data:'Sachin'})}>Get Name</button>
+              <h1>{state.loc}</h1>
+              <button onClick={()=>{
+                dispatch({type:'LOC',data:'Mumbai'})
+              }}>Get Loc</button>
+
+              <h1>{state.runs}</h1>
+              <button onClick={fnRuns}>Get Runs</button>
+             
+            </div>
+   }
+
+   ReactDOM.render(<App />, document.getElementById('root'))
+</script>

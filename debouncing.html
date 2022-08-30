@@ -1,0 +1,20 @@
+<b>Product Name</b><input onkeyup="debounce(event)" />
+
+
+<script>
+    let timer;
+   function debounce(e){
+      clearTimeout(timer);
+       timer=setTimeout(function(){
+        fnGetProducts(e)
+       },1000)
+   }
+
+   function fnGetProducts(e){
+       //1. take the input
+       //2. send req to my server
+       console.log('GetProducts from DB  on this production name    '+e.target.value)
+   }
+
+   
+</script>

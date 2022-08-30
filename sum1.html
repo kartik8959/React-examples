@@ -1,0 +1,43 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+
+<script type="text/babel">
+  
+  class Sum extends React.Component{
+   
+   fnSum(){
+      var n1=document.getElementsByTagName('input')[0].value;
+      var n2=document.getElementsByTagName('input')[1].value;
+      var sum=Number(n1)+Number(n2);
+      var resRef= document.querySelector('h1');
+      resRef.innerText=sum;
+      var clr='blue'
+      if(sum > 100){
+        clr='red'
+      }
+      resRef.style.color=clr
+
+   }
+   render(){
+        return <div>
+                <p>
+                    <b>No1:</b><input />
+                </p>
+                <p>
+                    <b>No2:</b><input />
+                </p>
+                <p>
+                    <input onClick={this.fnSum} type="button" value="Find Sum" />
+                </p>
+                <h1>0</h1>
+            </div>
+   }
+  
+}
+   ReactDOM.render(<Sum />,document.getElementsByTagName('div')[0])
+
+</script>

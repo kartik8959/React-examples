@@ -1,0 +1,194 @@
+Duration: 70h
+
+HTML
+
+2h
+
+
+CSS
+
+2h
+
+JavaScript : 30 concepts
+
+
+React
+
+1. Why we for React ?
+
+2. react vs angular 
+
+3. How to prepare templates using react ?
+
+   components : class, functional, JSX
+
+4. How to handle the events ?
+
+5. How to take the data from inputcontrols ?
+
+
+
+8. How to handle AJAX (XMLHTTPRequest, fetch, axios)
+
+9. How to render the data ?
+
+10. How to apply styles dynamically ? inline, exteranl(class)
+15. How to create/use reusbale component ?
+16. var , let , const , this, this.state, this.props, this.refs
+17. lists and keys
+19. Lifecycle menthod 
+21. context
+
+22. communication b/w components
+    p to c 
+    c to p 
+    sibling
+25. state less vs state full components
+
+
+
+14. How to handle routing in react (create-react-app)
+30. Virtual DOM
+
+
+
+
+
+
+18. Exception Handling
+
+20. React.Fragment
+
+23. create and validate react forms
+
+24. Higer order component(HOC)
+
+26. controlled vs uncontrolled component
+
+27. profilers in React
+
+28. portals in React
+
+29. with JSX and with out JSX
+
+31. test cases
+
+32. React.memo
+
+33. bootstrap
+
+34. material UI
+
+Redux
+
+1. How to integrate redux into react application
+
+2. action, store, reducers
+
+3. redux logger
+
+4. redux thunk
+
+5. redux saga
+
+6. redux forms
+
+7. redux toolkit
+
+
+
+
+Hooks
+
+1. useState
+
+2. useEffect
+
+3. useRef
+
+4. useContext
+
+
+
+5. useReducer
+
+6. useMemo
+
+7. useCallback
+
+
+
+React Native
+
+
+
+TypeScript
+
+
+
+
+
+REact+Redux+hooks(ui) + node + MongoDB 
+GIT
+Deplyment (Godday, AWS, Heroku, Azure)
+
+Videos:
+
+29-11-2021	https://vimeo.com/654480368	Re@(t#N@re$h
+01-12-2021	https://vimeo.com/654482907	$r!Nu8:00N!t
+02-12-2021	https://vimeo.com/654482981	Re@(t#N@re$h
+03-12-2021	https://vimeo.com/654483037	$r!Nu8:00N!t
+06-12-2021	https://vimeo.com/654483102	Re@(t#N@re$h
+07-12-2021	https://vimeo.com/654483208	$r!Nu8:00N!t
+08-12-2021	https://vimeo.com/654483909	Re@(t#N@re$h
+09-12-2021	https://vimeo.com/654793576	$r!Nu8:00N!t
+10-12-2021	https://vimeo.com/655209322	Re@(t#N@re$h
+13-12-2021	https://vimeo.com/656014249	Re@(t#N@re$h
+14-12-2021	https://vimeo.com/656425045	Re@(t#N@re$h
+15-12-2021	https://vimeo.com/656861373	$r!Nu8:00N!t
+16-12-2021	https://vimeo.com/657298358	Re@(t#N@re$h
+17-12-2021	https://vimeo.com/657706485	$r!Nu8:00N!t
+20-12-2021	https://vimeo.com/658467327	Re@(t#N@re$h
+
+21-12-2021
+https://vimeo.com/658834117
+$r!Nu8:00N!t
+
+22-12-2021
+https://vimeo.com/659200662
+Re@(t#N@re$h
+
+23-12-2021
+https://vimeo.com/659543770
+$r!Nu8:00N!t
+
+
+27-12-2021	https://vimeo.com/660326385	Re@(t#N@re$h
+
+
+28-12-2021
+https://vimeo.com/660576197
+$r!Nu8:00N!t
+
+29-12-2021
+https://vimeo.com/660834296
+Re@(t#N@re$h
+
+30-12-2021
+https://vimeo.com/661092216
+$r!Nu8:00N!t
+
+31-12-2021
+https://vimeo.com/661357840
+Re@(t#N@re$h
+
+
+
+
+
+
+
+
+
+
+

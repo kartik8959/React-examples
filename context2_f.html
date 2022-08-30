@@ -1,0 +1,82 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+
+const ctx=React.createContext();
+
+  
+  const A=()=>{
+     return  <div>
+         <h1>A:</h1>
+         <B/>
+      </div>
+  }
+ 
+
+  
+    const B=()=>{
+    const ctxData=React.useContext(ctx)
+     return  <div>
+         <h1>B:{ctxData.loc}</h1>
+         <C/>
+      </div>
+  }
+ 
+
+  
+    const C=()=>{
+     return  <div>
+         <h1>C:</h1>
+         <ctx.Consumer>
+            {
+                (data1)=>{
+                   return <span>{data1.runs}</span>
+                }
+            }
+         </ctx.Consumer>
+         <D />
+      </div>
+  }
+ 
+
+  
+    const D=()=>{
+     const ctxData=React.useContext(ctx)
+     return  <div>
+         <h1>D:{ctxData.name}</h1>
+      </div>
+  }
+
+
+
+    
+    const App=()=>{
+       const data={name:'sachin','runs':20000,loc:'Mumbai'}
+       return  <div>
+           <h1>App</h1>
+           <ctx.Provider value={data}>
+            <A />
+           </ctx.Provider>
+             
+          
+        </div>
+    }
+   
+
+
+
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

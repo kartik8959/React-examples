@@ -1,0 +1,96 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+
+
+<div></div>
+
+
+<script type="text/babel">
+
+class Table extends React.Component{
+    render(){
+        return  <table border="2px">
+                   <thead>
+                      <tr>
+                         {
+                             this.props.headers.map((v,i)=>{
+                                 return <th key={i}>{v}</th>
+                             })
+                         }
+                         
+                      </tr>
+                   </thead>
+                    <tbody>
+
+                       {
+                           this.props.data.map((obj,i)=>{
+                               return   <tr key={i}>
+                                    {
+                                        Object.keys(obj).map((k,index)=>{
+                                            return <td key={index}>
+                                                   {obj[k]}
+                                                </td>
+                                        })
+                                    }
+                                </tr>
+                           })
+                       }
+                   
+                    </tbody>
+                </table>
+    }
+}
+class App extends React.Component {
+    constructor(){
+        super();
+        this.students=[
+            {
+                n:'s1',
+                m:300,
+                a:'HYd'
+            },
+            {
+                n:'s2',
+                m:400,
+                a:'VSKP'
+            }
+        ]
+        this.players=[
+         {
+            n:'Sachin',
+            r:20000,
+            l:'Mumbai'
+         },
+         {
+            n:'Dhoni',
+            r:15000,
+            l:'Ranchi'
+         },
+         {
+            n:'Kohli',
+            r:10000,
+            l:'Delhi'
+         }
+     ]
+    }
+    render(){
+         return <div>
+                <h3>Student</h3>
+                <Table data={this.students} headers={['Name','Marks','Address']} />
+                <h3>Players</h3>
+                <Table data={this.players} headers={['Name','Runs','Location']} />
+            </div>
+    }
+   
+}
+
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

@@ -1,0 +1,83 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+
+<script type="text/babel">
+
+class AccordionItem extends React.Component{
+   
+  
+    render(){
+        const {item,fnClick,isShow,val}=this.props;
+        return <div>
+            <h3 id={val} style={{background:'yellow',cursor:'pointer'}} onClick={fnClick}>{item.header}</h3>
+            {
+             isShow && <p>
+                {item.body}
+            </p>
+            }
+        </div>
+    }
+}
+class Accordion extends React.Component{
+    state={
+        itemNo:0
+    }
+
+    fnClick=(e)=>{
+
+        this.setState({
+            itemNo:this.state.itemNo == e.target.id ? -1 : e.target.id
+        })
+    
+    }
+    render(){
+        const {data}=this.props
+        const {itemNo} =this.state;
+        return <div>
+                 {
+                     data.map((obj,index)=>{
+                         return <AccordionItem val={index} item={obj} fnClick={this.fnClick} isShow={itemNo==index} />
+                     })
+                 }
+            </div>
+    }
+}
+
+class App extends React.Component {
+    constructor(){
+        super();
+        this.data=[
+            {
+                'header':'Sachin',
+                'body':`This is Sachin, It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.`
+            },
+            {
+                'header':'Dhoni',
+                'body':`This is Dhoni  It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.`
+            },
+            {
+                'header':'Kohli',
+                'body':`This is Kohli, It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the .accordion-body, though the transition does limit overflow.`
+            }
+        ]
+    }
+    render(){
+       return <div>
+           <Accordion data={this.data} />
+        </div>
+    }
+   
+}
+
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

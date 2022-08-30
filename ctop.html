@@ -1,0 +1,38 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+   class Player extends React.Component{
+    constructor(){
+        super();
+        this.state={
+            name:'sachin'
+        }
+    }
+        render(){
+            this.props.f(this.state.name)
+            return  <h1>Child: </h1>
+        }
+   }
+
+  
+
+   class App extends React.Component{
+   
+    cb(data){
+       console.log('parent ',data)
+    }
+    render(){
+       return <div>
+               <h1>App</h1>
+               <Player f={this.cb}  />
+            </div>
+   }
+}
+
+   ReactDOM.render(<App />, document.getElementById('root'))
+</script>

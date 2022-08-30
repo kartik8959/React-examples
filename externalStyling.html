@@ -1,0 +1,156 @@
+<script src="babel.min.js"></script>
+<script src="react.development.js"></script>
+<script src="react-dom.development.js"></script>
+
+<style>
+    body{
+        margin: 0px;
+    }
+    .mobile-menu{
+        height: 150;
+        width: 150;
+        display: inline-block;
+        text-align: left;
+        position: absolute;
+        top: 0;
+        transition: left 2s;
+        background: yellow;
+    }
+    .menu{
+        text-align: right;
+        background: yellow;
+        height: 40px;
+        line-height: 40px;
+    }
+    .menu > a{
+        margin-right: 20px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    }
+    .mobile-menu > a{
+        font-weight: bold;
+       letter-spacing: 3px;
+       display: block;
+       margin: 15px;
+    }
+
+    .active{
+        color: red;
+        font-size: 20px;
+        font-style: italic;
+    }
+    .text-right{
+        text-align: right;
+    }
+</style>
+
+<div></div>
+
+
+<script type="text/babel">
+
+const Home=()=>{
+    return <h1>This is Home Page</h1>
+}
+
+const About=()=>{
+    return <h1>This is About Page</h1>
+}
+
+const Contact=()=>{
+    return <h1>This is Contact Page</h1>
+}
+
+const Services=()=>{
+    return <h1>This is Services Page</h1>
+}
+class App extends React.Component {
+
+    constructor(){
+        super();
+        let loc='H'
+
+        switch(location.hash){
+            case '#/about': 
+            loc='A'
+            break;
+            case '#/home': 
+            loc='H'
+            break;
+            case '#/contact': 
+            loc='C'
+            break;
+            case '#/service': 
+            loc='S'
+            break;
+
+        }
+
+        this.state={
+            menuItem:loc,
+            isMobileView:document.body.offsetWidth<600 ? true:false,
+            l:-180
+        }
+        let timeoutId;
+        window.addEventListener('resize',()=>{
+           clearTimeout(timeoutId)
+           timeoutId=setTimeout(()=>{
+                console.log('start')
+                let _isMobile=false
+                if(document.body.offsetWidth <=600){
+                        _isMobile=true;
+                }
+                this.setState({
+                    isMobileView:_isMobile
+                })
+           },200)
+          
+        })
+    }
+    
+   
+
+    fnMenuClick=(e)=>{
+        e.stopPropagation()
+        if(e.target.nodeName =='DIV') return
+        this.setState({
+            menuItem:e.target.id,
+            l:-180
+        })
+        console.log(e.target)
+    }
+
+    mobileMenuBtnClick=()=>{
+        this.setState({
+            l:this.state.l==0 ? -180 : 0
+        })
+    }
+    render(){
+        const {menuItem,isMobileView,l}=this.state
+        return <div>
+                    <div className='text-right'>{isMobileView && <button onClick={this.mobileMenuBtnClick}>mobile menu</button>}</div>
+                    <div style={{left:l}} className={isMobileView ? 'mobile-menu' : 'menu'} onClick={this.fnMenuClick}>
+                        <a id="H" className={menuItem === 'H' ? 'active': ''}  href="#/home">Home</a>
+                        <a id="A" className={menuItem === 'A' ? 'active': ''}  href="#/about">About</a>
+                        <a id="C" className={menuItem === 'C' ? 'active': ''}  href="#/contact">Contact</a>
+                        <a id="S" className={menuItem === 'S' ? 'active': ''}  href="#/service">Services</a>
+                    </div>
+
+
+               {menuItem == 'H' && <Home /> }
+               {menuItem == 'A'  && <About />} 
+               {menuItem == 'C' && <Contact /> }
+               {menuItem == 'S'  && <Services />} 
+            </div>
+    }
+   
+}
+
+
+
+ReactDOM.render(<App />, document.getElementsByTagName('div')[0])
+  
+
+</script>
+
+

@@ -1,0 +1,28 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div id="root"></div>
+
+
+
+<script type="text/babel">
+   
+   function Name(){
+       return  <p>Dhoni</p>
+   }
+
+   
+   function App(){
+       return <div>
+              
+               <Name />
+               <Name />
+               <Name />
+               <Name />
+               <Name />
+            </div>
+   }
+
+   ReactDOM.render(<App />, document.getElementById('root'))
+</script>

@@ -1,0 +1,43 @@
+<script src="react.development.js"></script>
+<script src="babel.min.js"></script>
+<script src="react-dom.development.js"></script>
+
+<div></div>
+
+
+<script type="text/babel">
+
+const Emp=React.memo(()=>{
+    console.log('Emp rendered')
+    return <h1>Emp</h1>
+})
+const Increment=React.memo((props)=>{
+    console.log('Increment rendered : ',props.children)
+    return <h1>{props.children}: {props.val} </h1>
+})
+
+const Button=React.memo((props)=>{
+    console.log('Button rendered ', props.text)
+    return <button onClick={props.fnInc}>{props.text}</button>
+})
+const App=()=>{
+        const [age,setAge]=React.useState(26)
+        const [sal,setSal]=React.useState(20000)
+        const fnIncAge=React.useCallback(()=>{
+            setAge(age+1)
+        },[age])
+        const fnIncSal=React.useCallback(()=>{
+            setSal(sal+1000)
+        },[sal])
+        return <div>
+            <Emp />
+            <Increment val={age}>Age</Increment>
+            <Button text="Inc Age" fnInc={fnIncAge} />
+            <Increment val={sal}>Sal</Increment>
+            <Button text="Inc Sal" fnInc={fnIncSal} />
+        </div>
+}
+
+ReactDOM.render(<App name="sachin" />,document.getElementsByTagName('div')[0])
+
+</script>
